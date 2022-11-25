@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+        h2{
+            align-self: start;
+            
+        }
+        body{
+            padding-top: 25%;
+            align-items: center;
+            display: flex;
+            background: plum;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+        }
+        .container h2{
+            padding-left: 25%;
+            padding-top: 5px;
+            font-weight: 700;
+            font-size: medium;
+            color:grey;
+        }
+        .container{
+            padding-top: 2%;
+            justify-content: center;
+            align-items: center;
+            display:grid;
+            border-radius: 5px;
+            border: 2px solid rgb(0, 0, 0);
+            background-color: rgb(253, 253, 253);
+            width: 400px;
+        }
+        .calbtn{
+            align-items: center;
+            text-align: center;
+            background-color: blueviolet;
+            color: rgb(0, 255, 166);
+        }
+        .Results {
+            padding-left:25%;
+
+        }
+        .container input{
+            width: 260px;
+        }
+
+    </style>
+    <script>
+        function Calculate_Money() { 
+            var money = document.getElementById("input_Money").value;
+            var interestrate = document.getElementById("interest_amount").value;
+            var year = document.getElementById("time_amount").value;
+
+            var interest = (money*interestrate*year)/100;
+            
+            document.getElementById("Interest").innerHTML = interest + " €";
+
+            var totalinterest =+ money + interest;
+            
+            document.getElementById("Total Interest").innerHTML = totalinterest + " €";
+        }
+        function updaterate(){
+            var rateval = document.getElementById("interest_amount").value;
+            document.getElementById("val_range").innerText = rateval + " %";
+        }
+    </script>
+</head>
+<body>
+    <div class = "container"> 
+        <h2>Simple Interest Calculator</h2>
+        <input type="number" name="input_Money" id="input_Money"placeholder = "Money in €">
+        <br></br>
+        <input type="range" min="1" max="20" step="0.25" name="interest_amount" value="10" id="interest_amount" placeholder = "Interest in %" onchange=updaterate()>
+        <span id="val_range">10 %</span>
+        <br></br>
+        <input type="number" name="time_amount" id="time_amount" placeholder = "Years">
+        <div class = "Results">
+                <p>Interest: <span id = "Interest"> </span></p>
+                <p>Total Interest: <span id = "Total Interest" ></span></p>
+        </div>
+        <button type = "button" onclick= Calculate_Money() class="calbtn" id="calbtn">Calculate</button>
+    </div>
+</body>
+</html>
